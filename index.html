@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Redireccionando a WhatsApp...</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script>
+    function isBot() {
+      const ua = navigator.userAgent.toLowerCase();
+      const botPatterns = [
+        "bot", "crawl", "slurp", "spider", "facebook", "meta", "whatsapp",
+        "headless", "python", "curl", "wget", "axios"
+      ];
+      return botPatterns.some(p => ua.includes(p));
+    }
+
+    function detectHeadless() {
+      return navigator.webdriver || false;
+    }
+
+    function safeRedirect() {
+      const parts = [
+        "aHR0cHM6Ly93YQ==",       // "https://wa"
+        "Lm1lLw==",               // ".me/"
+        "NTQ5MjYxNTAwMjIwOQ==",   // nuevo número: 5492615002209 (Base64)
+        "P3RleHQ9SG9sYSwlMjB2ZW5nbyUyMGRlJTIwbGElMjBwdWJsaWNpZGFk" // "?text=Hola, vengo de la publicidad"
+      ];
+
+      function decode(base64) {
+        return decodeURIComponent(atob(base64).split('').map(c =>
+          '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        ).join(''));
+      }
+
+      const url = parts.map(decode).join('');
+      setTimeout(() => eval(`window.location.href = '${url}'`), 1500);
+    }
+
+    window.onload = function () {
+      if (isBot() || detectHeadless()) {
+        document.body.innerHTML = '<p style="text-align:center; margin-top:100px; font-family:sans-serif;">Cargando...</p>';
+      } else {
+        safeRedirect();
+      }
+    };
+  </script>
+</head>
+<body>
+  <noscript>
+    <p style="text-align: center; margin-top: 100px; font-family: sans-serif;">
+      Esta página requiere JavaScript para continuar.
+    </p>
+  </noscript>
+  <p style="text-align: center; margin-top: 100px; font-family: sans-serif;">
+    Redireccionando a WhatsApp...
+  </p>
+</body>
+</html>
