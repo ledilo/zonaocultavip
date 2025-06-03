@@ -2,57 +2,97 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Redireccionando a WhatsApp...</title>
-  <meta name="robots" content="noindex, nofollow">
-  <script>
-    function isBot() {
-      const ua = navigator.userAgent.toLowerCase();
-      const botPatterns = [
-        "bot", "crawl", "slurp", "spider", "facebook", "meta", "whatsapp",
-        "headless", "python", "curl", "wget", "axios"
-      ];
-      return botPatterns.some(p => ua.includes(p));
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahora463 - Casino de Confianza</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #000;
+      text-align: center;
     }
-
-    function detectHeadless() {
-      return navigator.webdriver || false;
+    .header {
+      padding: 30px 10px 10px;
     }
-
-    function safeRedirect() {
-      const parts = [
-        "aHR0cHM6Ly93YQ==",       // "https://wa"
-        "Lm1lLw==",               // ".me/"
-        "NTQ5MjYxNTAwMjIwOQ==",   // nuevo número: 5492615002209 (Base64)
-        "P3RleHQ9SG9sYSwlMjB2ZW5nbyUyMGRlJTIwbGElMjBwdWJsaWNpZGFk" // "?text=Hola, vengo de la publicidad"
-      ];
-
-      function decode(base64) {
-        return decodeURIComponent(atob(base64).split('').map(c =>
-          '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-        ).join(''));
-      }
-
-      const url = parts.map(decode).join('');
-      setTimeout(() => eval(`window.location.href = '${url}'`), 1500);
+    .logo {
+      width: 140px;
+      border-radius: 50%;
     }
-
-    window.onload = function () {
-      if (isBot() || detectHeadless()) {
-        document.body.innerHTML = '<p style="text-align:center; margin-top:100px; font-family:sans-serif;">Cargando...</p>';
-      } else {
-        safeRedirect();
-      }
-    };
-  </script>
+    .verified {
+      font-size: 20px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    .trusted {
+      color: #27ae60;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .connect-box {
+      background-color: #2c2c2c;
+      color: white;
+      padding: 15px;
+      margin: 10px 20px;
+      border-radius: 10px;
+    }
+    .whatsapp-button {
+      background-color: #25d366;
+      color: white;
+      font-size: 18px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      margin: 20px auto;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .clients-box {
+      background-color: #dff6f2;
+      padding: 10px;
+      border-radius: 25px;
+      width: fit-content;
+      margin: 10px auto;
+      font-weight: bold;
+    }
+    .review-box {
+      border: 1px dashed #ccc;
+      padding: 10px;
+      width: fit-content;
+      margin: 15px auto;
+      font-size: 14px;
+    }
+    .footer {
+      font-size: 12px;
+      color: #777;
+      margin-top: 20px;
+    }
+    .bonus-bar {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <noscript>
-    <p style="text-align: center; margin-top: 100px; font-family: sans-serif;">
-      Esta página requiere JavaScript para continuar.
-    </p>
-  </noscript>
-  <p style="text-align: center; margin-top: 100px; font-family: sans-serif;">
-    Redireccionando a WhatsApp...
-  </p>
+  <div class="header">
+    <img class="logo" src="./logo.png" alt="Logo Ahora463">
+    <div class="verified">✅ Plataforma Verificada ✅</div>
+    <div class="trusted">Casino de Confianza</div>
+    <div class="connect-box">Te estamos conectando con nuestro equipo vía WhatsApp.</div>
+    <a href="https://wa.me/5492615535975" class="whatsapp-button">Ir a WhatsApp Ahora</a>
+    <div class="clients-box">👥 +10.000 CLIENTES GANANDO todos los días</div>
+    <div class="review-box">
+      "Excelente" ⭐⭐⭐⭐⭐ Calificación 4.9/5 en 🌟 Trustpilot
+    </div>
+    <div class="footer">© 2025 Ahora463. Todos los derechos reservados.</div>
+  </div>
+  <div class="bonus-bar">🎁 BONO ACTIVO AL 20% - ¡Solicítalo ahora por WhatsApp!</div>
 </body>
 </html>
