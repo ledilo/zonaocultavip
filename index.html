@@ -19,6 +19,7 @@
     .logo {
       width: 120px;
       border-radius: 50%;
+      border: 4px solid black;
     }
     .verified {
       font-size: 18px;
@@ -70,10 +71,8 @@
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      position: fixed;
-      bottom: 70px;
-      right: 20px;
-      z-index: 999;
+      margin: 20px auto;
+      display: inline-block;
       box-shadow: 0 0 12px rgba(0,0,0,0.3);
       text-decoration: none;
       animation: pulse 1.5s infinite;
@@ -83,23 +82,23 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-    .alert {
-      position: fixed;
-      bottom: 110px;
-      left: 10px;
-      background-color: #fff3cd;
-      color: #856404;
-      padding: 10px 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    .alert-box {
+      margin: 20px auto;
+      background-color: #fff0e6;
+      color: #c0392b;
+      padding: 12px 18px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
       font-size: 14px;
-      animation: slideInOut 6s ease-in-out infinite;
+      width: fit-content;
+      max-width: 90%;
+      animation: fadeInOut 6s ease-in-out infinite;
     }
-    @keyframes slideInOut {
-      0% { transform: translateX(-100%); opacity: 0; }
-      10% { transform: translateX(0); opacity: 1; }
-      90% { transform: translateX(0); opacity: 1; }
-      100% { transform: translateX(-100%); opacity: 0; }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: scale(0.9); }
+      10% { opacity: 1; transform: scale(1); }
+      90% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.9); }
     }
     @media (min-width: 768px) {
       body {
@@ -114,21 +113,20 @@
     <div class="verified">✅ Plataforma Verificada ✅</div>
     <div class="trusted">Casino de Confianza</div>
     <div class="connect-box">Te estamos conectando con nuestro equipo vía WhatsApp.</div>
+
+    <a href="https://wa.me/5492615535975" class="whatsapp-button">💬 Ir a WhatsApp</a>
+
     <div class="clients-box">👥 +10.000 CLIENTES GANANDO todos los días</div>
     <div class="review-box">
       "Excelente" ⭐⭐⭐⭐⭐ Calificación 4.9/5 en 🌟 Casinos
     </div>
+    <div class="alert-box" id="alert-box">🎉 Juan de Buenos Aires acaba de ganar $3.500 en Dino</div>
     <div class="footer">© 2025 Zonaocultavip. Todos los derechos reservados.</div>
   </div>
-
-  <a href="https://wa.me/5492615535975" class="whatsapp-button">💬 Ir a WhatsApp</a>
-
-  <div class="alert">🎉 Juan de Buenos Aires acaba de ganar $3.500 en Dino</div>
 
   <div class="bonus-bar">🎁 BONO ACTIVO AL 20% - ¡Solicítalo ahora por WhatsApp!</div>
 
   <script>
-    // Alertas aleatorias de jugadores
     const alerts = [
       '🎉 Juan de Buenos Aires acaba de ganar $30.500 en Dino',
       '🔥 Lucía duplicó su apuesta en el juego del Pollo',
@@ -138,7 +136,7 @@
     ];
 
     let alertIndex = 0;
-    const alertBox = document.querySelector('.alert');
+    const alertBox = document.getElementById('alert-box');
 
     setInterval(() => {
       alertIndex = (alertIndex + 1) % alerts.length;
@@ -147,4 +145,3 @@
   </script>
 </body>
 </html>
-
