@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahora463 - Casino de Confianza</title>
+  <title>Zonaocultavip - Casino Móvil</title>
   <style>
     body {
       margin: 0;
@@ -11,16 +11,17 @@
       background: #ffffff;
       color: #000;
       text-align: center;
+      overflow-x: hidden;
     }
     .header {
-      padding: 30px 10px 10px;
+      padding: 20px 10px 10px;
     }
     .logo {
-      width: 140px;
+      width: 120px;
       border-radius: 50%;
     }
     .verified {
-      font-size: 20px;
+      font-size: 18px;
       margin: 10px 0;
       font-weight: bold;
     }
@@ -35,18 +36,6 @@
       padding: 15px;
       margin: 10px 20px;
       border-radius: 10px;
-    }
-    .whatsapp-button {
-      background-color: #25d366;
-      color: white;
-      font-size: 18px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 30px;
-      margin: 20px auto;
-      cursor: pointer;
-      display: inline-block;
-      text-decoration: none;
     }
     .clients-box {
       background-color: #dff6f2;
@@ -63,11 +52,6 @@
       margin: 15px auto;
       font-size: 14px;
     }
-    .footer {
-      font-size: 12px;
-      color: #777;
-      margin-top: 20px;
-    }
     .bonus-bar {
       background-color: #27ae60;
       color: white;
@@ -78,21 +62,89 @@
       bottom: 0;
       width: 100%;
     }
+    .whatsapp-button {
+      background-color: #25d366;
+      color: white;
+      font-size: 18px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      z-index: 999;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      text-decoration: none;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .alert {
+      position: fixed;
+      bottom: 110px;
+      left: 10px;
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      font-size: 14px;
+      animation: slideInOut 6s ease-in-out infinite;
+    }
+    @keyframes slideInOut {
+      0% { transform: translateX(-100%); opacity: 0; }
+      10% { transform: translateX(0); opacity: 1; }
+      90% { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(-100%); opacity: 0; }
+    }
+    @media (min-width: 768px) {
+      body {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="header">
-    <img class="logo" src="./logo.png" alt="Logo Ahora463">
+    <img class="logo" src="./logo.png" alt="Logo Zonaocultavip">
     <div class="verified">✅ Plataforma Verificada ✅</div>
     <div class="trusted">Casino de Confianza</div>
     <div class="connect-box">Te estamos conectando con nuestro equipo vía WhatsApp.</div>
-    <a href="https://wa.me/5492615535975" class="whatsapp-button">Ir a WhatsApp Ahora</a>
     <div class="clients-box">👥 +10.000 CLIENTES GANANDO todos los días</div>
     <div class="review-box">
-      "Excelente" ⭐⭐⭐⭐⭐ Calificación 4.9/5 en 🌟 Trustpilot
+      "Excelente" ⭐⭐⭐⭐⭐ Calificación 4.9/5 en 🌟 Casinos
     </div>
-    <div class="footer">© 2025 Ahora463. Todos los derechos reservados.</div>
+    <div class="footer">© 2025 Zonaocultavip. Todos los derechos reservados.</div>
   </div>
+
+  <a href="https://wa.me/5492615535975" class="whatsapp-button">💬 Ir a WhatsApp</a>
+
+  <div class="alert">🎉 Juan de Buenos Aires acaba de ganar $3.500 en Dino</div>
+
   <div class="bonus-bar">🎁 BONO ACTIVO AL 20% - ¡Solicítalo ahora por WhatsApp!</div>
+
+  <script>
+    // Alertas aleatorias de jugadores
+    const alerts = [
+      '🎉 Juan de Buenos Aires acaba de ganar $30.500 en Dino',
+      '🔥 Lucía duplicó su apuesta en el juego del Pollo',
+      '💰 Maxi se llevó $7.200 en el juego del Globo',
+      '🎊 Sofía ganó 3 bonos de $10.000 en la Torre',
+      '💎 Nico retiró $20.000 jugando tragamonedas'
+    ];
+
+    let alertIndex = 0;
+    const alertBox = document.querySelector('.alert');
+
+    setInterval(() => {
+      alertIndex = (alertIndex + 1) % alerts.length;
+      alertBox.textContent = alerts[alertIndex];
+    }, 7000);
+  </script>
 </body>
 </html>
+
