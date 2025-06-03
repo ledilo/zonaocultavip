@@ -39,12 +39,22 @@
       border-radius: 10px;
     }
     .clients-box {
-      background-color: #dff6f2;
-      padding: 10px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      padding: 8px 15px;
       border-radius: 25px;
       width: fit-content;
       margin: 10px auto;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .clients-box img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid white;
     }
     .review-box {
       border: 1px dashed #ccc;
@@ -84,21 +94,33 @@
     }
     .alert-box {
       margin: 20px auto;
-      background-color: #fff0e6;
-      color: #c0392b;
+      background-color: #1e1e1e;
+      color: #fff;
       padding: 12px 18px;
       border-radius: 12px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       font-size: 14px;
       width: fit-content;
       max-width: 90%;
-      animation: fadeInOut 6s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideFade 6s ease-in-out infinite;
     }
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: scale(0.9); }
-      10% { opacity: 1; transform: scale(1); }
-      90% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(0.9); }
+    .alert-box img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .alert-text {
+      text-align: left;
+    }
+    @keyframes slideFade {
+      0% { opacity: 0; transform: translateY(30px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-30px); }
     }
     @media (min-width: 768px) {
       body {
@@ -116,11 +138,26 @@
 
     <a href="https://wa.me/5492615535975" class="whatsapp-button">💬 Ir a WhatsApp</a>
 
-    <div class="clients-box">👥 +10.000 CLIENTES GANANDO todos los días</div>
+    <div class="clients-box">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User1">
+      <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User2">
+      <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User3">
+      +10.000 CLIENTES GANANDO todos los días
+    </div>
+
     <div class="review-box">
       "Excelente" ⭐⭐⭐⭐⭐ Calificación 4.9/5 en 🌟 Casinos
     </div>
-    <div class="alert-box" id="alert-box">🎉 Juan de Buenos Aires acaba de ganar $3.500 en Dino</div>
+
+    <div class="alert-box" id="alert-box">
+      <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Foto">
+      <div class="alert-text">
+        <strong>Diego Martínez</strong><br>
+        🎁 Ganador de $5000<br>
+        📍 Desde Buenos Aires • hace 1 hora
+      </div>
+    </div>
+
     <div class="footer">© 2025 Zonaocultavip. Todos los derechos reservados.</div>
   </div>
 
@@ -128,20 +165,54 @@
 
   <script>
     const alerts = [
-      '🎉 Juan de Buenos Aires acaba de ganar $30.500 en Dino',
-      '🔥 Lucía duplicó su apuesta en el juego del Pollo',
-      '💰 Maxi se llevó $7.200 en el juego del Globo',
-      '🎊 Sofía ganó 3 bonos de $10.000 en la Torre',
-      '💎 Nico retiró $20.000 jugando tragamonedas'
+      {
+        name: 'Lucía Fernández',
+        img: 'https://randomuser.me/api/portraits/women/44.jpg',
+        text: '🎉 Ganó $30.500 en Dino',
+        location: 'Córdoba',
+        time: 'hace 2 minutos'
+      },
+      {
+        name: 'Maximiliano Ríos',
+        img: 'https://randomuser.me/api/portraits/men/77.jpg',
+        text: '🔥 Duplicó su apuesta en el Pollo',
+        location: 'Rosario',
+        time: 'hace 5 minutos'
+      },
+      {
+        name: 'Sofía Núñez',
+        img: 'https://randomuser.me/api/portraits/women/52.jpg',
+        text: '💰 Se llevó $7.200 en el Globo',
+        location: 'Mendoza',
+        time: 'hace 10 minutos'
+      },
+      {
+        name: 'Nico Herrera',
+        img: 'https://randomuser.me/api/portraits/men/84.jpg',
+        text: '🎊 Retiró $20.000 jugando tragamonedas',
+        location: 'Salta',
+        time: 'hace 15 minutos'
+      }
     ];
 
     let alertIndex = 0;
     const alertBox = document.getElementById('alert-box');
 
-    setInterval(() => {
+    function updateAlert() {
+      const alert = alerts[alertIndex];
+      alertBox.innerHTML = `
+        <img src="${alert.img}" alt="Foto">
+        <div class="alert-text">
+          <strong>${alert.name}</strong><br>
+          ${alert.text}<br>
+          📍 Desde ${alert.location} • ${alert.time}
+        </div>
+      `;
       alertIndex = (alertIndex + 1) % alerts.length;
-      alertBox.textContent = alerts[alertIndex];
-    }, 7000);
+    }
+
+    setInterval(updateAlert, 6000);
+    updateAlert();
   </script>
 </body>
 </html>
