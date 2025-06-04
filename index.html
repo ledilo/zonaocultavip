@@ -124,7 +124,7 @@
     }
   </style>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code (PageView y Subscribe) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -134,12 +134,12 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1014294567525561'); 
+    fbq('init', '1014294567525561');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1014294567525561&ev=PageView&noscript=1"/>
+         src="https://www.facebook.com/tr?id=1014294567525561&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 </head>
@@ -148,11 +148,12 @@
     <img class="logo" src="./logo.png" alt="Logo Zonaocultavip" />
     <div class="verified">✅ Plataforma Verificada ✅</div>
     <div class="trusted">Casino de Confianza</div>
-    <div class="connect-box">Te estamos conectando con nuestro equipo vía WhatsApp.</div>
+    <div class="connect-box">Te tenemos listos con un bono del 20% y pagos instantáneos.</div>
 
+    <!-- BOTÓN DE WHATSAPP (sin evento personalizado, solo Subscribe) -->
     <a href="https://wa.me/5492615535975?text=Hola%20vengo%20por%20la%20publicidad"
        class="whatsapp-button"
-       onclick="fbq('trackCustom', 'WhatsAppClick')">
+       onclick="fbq('track', 'Subscribe')">
        💬 Ir a WhatsApp
     </a>
 
@@ -179,9 +180,10 @@
     <div class="footer">© 2025 Zonaocultavip. Todos los derechos reservados.</div>
   </div>
 
-  <div class="bonus-bar">🎁 BONO ACTIVO AL 20% - ¡Solicítalo ahora por WhatsApp!</div>
+  <div class="bonus-bar">🎁 BONO ACTIVO AL 20% - ¡Suscribite y reclámalo!</div>
 
   <script>
+    // Rotación de testimonios en alert-box
     const alerts = [
       {
         name: 'Lucía Fernández',
@@ -212,10 +214,8 @@
         time: 'hace 15 minutos'
       }
     ];
-
     let alertIndex = 0;
     const alertBox = document.getElementById('alert-box');
-
     function updateAlert() {
       const alert = alerts[alertIndex];
       alertBox.innerHTML = `
@@ -228,9 +228,9 @@
       `;
       alertIndex = (alertIndex + 1) % alerts.length;
     }
-
     setInterval(updateAlert, 6000);
     updateAlert();
   </script>
 </body>
 </html>
+
