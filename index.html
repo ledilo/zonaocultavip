@@ -122,11 +122,6 @@
       90% { opacity: 1; transform: translateY(0); }
       100% { opacity: 0; transform: translateY(-30px); }
     }
-    @media (min-width: 768px) {
-      body {
-        display: none;
-      }
-    }
   </style>
   <!-- Meta Pixel Code -->
 <script>
@@ -231,5 +226,17 @@ src="https://www.facebook.com/tr?id=1014294567525561&ev=PageView&noscript=1"
     setInterval(updateAlert, 6000);
     updateAlert();
   </script>
+  <script>
+  const isMobile = /iPhone|Android|iPad|iPod|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent)
+                  || window.innerWidth < 768;
+
+  if (isMobile) {
+    // Número en base64 (5492615535975)
+    const encoded = "NTQ5MjYxNTUzNTk3NQ==";
+    const decoded = atob(encoded);
+    const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
+    window.location.href = `https://wa.me/${decoded}?text=${mensaje}`;
+  }
+</script>
 </body>
 </html>
