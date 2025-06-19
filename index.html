@@ -151,12 +151,26 @@
     <div class="connect-box">Te tenemos listos con un bono del 20% y pagos instantáneos.</div>
 
     <!-- BOTÓN DE WHATSAPP (sin evento personalizado, solo Subscribe) -->
-    <a href="https://wa.me/5492615535975?text=Hola%20vengo%20por%20la%20publicidad"
-       class="whatsapp-button"
-       onclick="fbq('track', 'Subscribe')">
-       💬 Ir a WhatsApp
-    </a>
+  <a href="#" class="whatsapp-button" id="goToWhatsapp">💬 Ir a WhatsApp</a>
 
+<script>
+  document.getElementById("goToWhatsapp").addEventListener("click", function(e) {
+    e.preventDefault();
+    fbq('track', 'Subscribe');
+
+    // Número y mensaje codificados en Base64
+    const numeroCodificado = "NTQ5MjYxNjA4NzI0NQ=="; // 5492616087245
+    const mensajeCodificado = "SG9sYSB2ZW5nbyBwb3IgbGEgcHVibGljaWRh"; // Hola vengo por la publicidad
+
+    // Decodificar con atob()
+    const numero = atob(numeroCodificado);
+    const mensaje = atob(mensajeCodificado);
+
+    // Redirigir
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.location.href = link;
+  });
+</script>
     <div class="clients-box">
       <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User1" />
       <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User2" />
