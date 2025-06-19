@@ -133,12 +133,12 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1014294567525561');
+    fbq('init', '1771404050443652');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1014294567525561&ev=PageView&noscript=1"/>
+         src="https://www.facebook.com/tr?id=1771404050443652&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 </head>
@@ -155,6 +155,8 @@
 <script>
   document.getElementById("goToWhatsapp").addEventListener("click", function(e) {
     e.preventDefault();
+
+    // Disparo del evento Subscribe (Meta Pixel)
     fbq('track', 'Subscribe');
 
     // Número y mensaje codificados en Base64
@@ -165,10 +167,11 @@
     const numero = atob(numeroCodificado);
     const mensaje = atob(mensajeCodificado);
 
-    // Redirigir
+    // Redirigir a WhatsApp
     const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.location.href = link;
   });
+</script>
 </script>
     <div class="clients-box">
       <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User1" />
