@@ -1,252 +1,200 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mystermask</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Casino Minijuegos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #000;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('./fondo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
       text-align: center;
-      overflow-x: hidden;
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      touch-action: none;
     }
-    .header {
-      padding: 20px 10px 10px;
-    }
-    .logo {
-  width: 120px;
-  /* Eliminado border-radius y border */
-}
-    .verified {
-      font-size: 18px;
-      margin: 10px 0;
-      font-weight: bold;
-    }
-    .trusted {
-      color: #27ae60;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-    .connect-box {
-      background-color: #2c2c2c;
-      color: white;
-      padding: 15px;
-      margin: 10px 20px;
-      border-radius: 10px;
-    }
-    .clients-box {
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 25px;
-      width: fit-content;
-      margin: 10px auto;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .clients-box img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 2px solid white;
-    }
-    .review-box {
-      border: 1px dashed #ccc;
-      padding: 10px;
-      width: fit-content;
-      margin: 15px auto;
-      font-size: 14px;
-    }
-    .bonus-bar {
-      background-color: #27ae60;
-      color: white;
-      padding: 10px;
-      font-weight: bold;
-      font-size: 14px;
-      position: fixed;
-      bottom: 0;
+
+    .container {
+      height: 100vh;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.65);
+      box-sizing: border-box;
+      padding: 30px 15px 0;
+      overflow: hidden;
     }
-    .whatsapp-button {
+
+    .logo {
+      width: 140px;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+    }
+
+    .texto-principal {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    }
+
+    .texto-principal strong {
+      color: #00ff88;
+      text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
       background-color: #25d366;
       color: white;
-      font-size: 18px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      margin: 20px auto;
-      display: inline-block;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 12px 30px;
+      border-radius: 12px;
       text-decoration: none;
+      margin: 15px 0;
       animation: pulse 1.5s infinite;
+      box-shadow: 0 0 10px #25d366, 0 0 20px #25d366, 0 0 30px #25d366;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
     }
+
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      50% { transform: scale(1.08); }
       100% { transform: scale(1); }
     }
-    .alert-box {
-      margin: 20px auto;
-      background-color: #1e1e1e;
-      color: #fff;
-      padding: 12px 18px;
+
+    .info {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.6);
+    }
+
+    .juegos {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #00ff88;
+      text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+    }
+
+    .footer {
+      display: none;
+    }
+
+    .alerta-bono {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 255, 136, 0.2);
+      color: #00ff88;
+      padding: 10px 16px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      font-size: 14px;
-      width: fit-content;
-      max-width: 90%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: slideFade 6s ease-in-out infinite;
+      font-weight: bold;
+      font-size: 1rem;
+      text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+      box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+      z-index: 1000;
+      animation: pulseGlow 2s infinite;
     }
-    .alert-box img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      flex-shrink: 0;
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88; }
+      50% { box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88; }
+      100% { box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88; }
     }
-    .alert-text {
-      text-align: left;
-    }
-    @keyframes slideFade {
-      0% { opacity: 0; transform: translateY(30px); }
-      10% { opacity: 1; transform: translateY(0); }
-      90% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-30px); }
+
+    @media screen and (max-width: 400px) {
+      .texto-principal {
+        font-size: 1.2rem;
+      }
+
+      .info, .juegos {
+        font-size: 0.95rem;
+      }
+
+      .whatsapp-btn {
+        font-size: 1rem;
+        padding: 10px 24px;
+      }
+
+      .alerta-bono {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        bottom: 85px;
+      }
     }
   </style>
 
-  <!-- Meta Pixel Code (PageView y Subscribe) -->
+  <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1771404050443652');
-    fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1066856052037916');
+
+    document.addEventListener("DOMContentLoaded", function() {
+      fbq('track', 'PageView');
+    });
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1771404050443652&ev=PageView&noscript=1"/>
+    src="https://www.facebook.com/tr?id=1066856052037916&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <div class="header">
-    <img class="logo" src="./logo.png.png" alt="Logo Zonaocultavip" />
-    <div class="verified">✅ Plataforma MyStake ✅</div>
-    <div class="trusted">Casino Verificado</div>
-    <div class="connect-box">Tenemos bonos del 20% o 30% con pagos instantáneos.</div>
-
-    <!-- BOTÓN DE WHATSAPP (sin evento personalizado, solo Subscribe) -->
-  <a href="#" class="whatsapp-button" id="goToWhatsapp">💬 Ir a WhatsApp</a>
-
-<script>
-  document.getElementById("goToWhatsapp").addEventListener("click", function(e) {
-    e.preventDefault();
-
-    // Disparo del evento Subscribe (Meta Pixel)
-    fbq('track', 'Subscribe');
-
-    // Número y mensaje codificados en Base64
-    const numeroCodificado = "NTQ5MjYxNjA4NzI1MA=="; // 5492616087250
-    const mensajeCodificado = "SG9sYSB2ZW5nbyBwb3IgbGEgcHVibGljaWRh"; // Hola vengo por la publicidad
-
-    // Decodificar con atob()
-    const numero = atob(numeroCodificado);
-    const mensaje = atob(mensajeCodificado);
-
-    // Redirigir a WhatsApp
-    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.location.href = link;
-  });
-</script>
-</script>
-    <div class="clients-box">
-      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User1" />
-      <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User2" />
-      <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User3" />
-      +10.000 CLIENTES GANANDO todos los días
-    </div>
-
-    <div class="review-box">
-      "Excelente" ⭐⭐⭐⭐⭐ Calificación 4.9/5 en 🌟 Casinos
-    </div>
-
-    <div class="alert-box" id="alert-box">
-      <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Foto" />
-      <div class="alert-text">
-        <strong>Diego Martínez</strong><br />
-        🎁 Ganador de $5000<br />
-        📍 Desde Buenos Aires • hace 1 hora
-      </div>
-    </div>
-
-    <div class="footer">© 2025 Mystermask. Todos los derechos reservados.</div>
+  <div class="container">
+    <img src="./logo.png" alt="Logo" class="logo" />
+    <p class="texto-principal">
+      Presioná el <strong>botón verde</strong> "WhatsApp" para crearte un usuario.
+    </p>
+    <div class="whatsapp-btn" onclick="redirigirWhatsapp()">WhatsApp</div>
+    <p class="info">Carga mínima: $1000</p>
+    <p class="juegos">
+      Todos los minijuegos: El Pollo, Crocodino, Penales y Más.
+    </p>
   </div>
 
-  <div class="bonus-bar">🎁 BONOS TODOS LOS DIAS - ¡Escribinos y reclamá uno!</div>
+  <div class="alerta-bono">
+    ¡BONOS DEL 20% TODOS LOS DÍAS!
+  </div>
 
-  <script>
-    // Rotación de testimonios en alert-box
-    const alerts = [
-      {
-        name: 'Lucía Fernández',
-        img: 'https://randomuser.me/api/portraits/women/44.jpg',
-        text: '🎉 Ganó $30.500 en Dino',
-        location: 'Córdoba',
-        time: 'hace 2 minutos'
-      },
-      {
-        name: 'Maximiliano Ríos',
-        img: 'https://randomuser.me/api/portraits/men/77.jpg',
-        text: '🔥 Duplicó su apuesta en el Pollo',
-        location: 'Rosario',
-        time: 'hace 5 minutos'
-      },
-      {
-        name: 'Sofía Núñez',
-        img: 'https://randomuser.me/api/portraits/women/52.jpg',
-        text: '💰 Se llevó $7.200 en el Globo',
-        location: 'Mendoza',
-        time: 'hace 10 minutos'
-      },
-      {
-        name: 'Nico Herrera',
-        img: 'https://randomuser.me/api/portraits/men/84.jpg',
-        text: '🎊 Retiró $20.000 jugando tragamonedas',
-        location: 'Salta',
-        time: 'hace 15 minutos'
+  <script> 
+    let eventoDisparado = false;
+
+    function redirigirWhatsapp() {
+      if (!eventoDisparado) {
+        fbq('track', 'Lead', {
+          content_name: 'Botón WhatsApp'
+        });
+        eventoDisparado = true;
       }
-    ];
-    let alertIndex = 0;
-    const alertBox = document.getElementById('alert-box');
-    function updateAlert() {
-      const alert = alerts[alertIndex];
-      alertBox.innerHTML = `
-        <img src="${alert.img}" alt="Foto">
-        <div class="alert-text">
-          <strong>${alert.name}</strong><br>
-          ${alert.text}<br>
-          📍 Desde ${alert.location} • ${alert.time}
-        </div>
-      `;
-      alertIndex = (alertIndex + 1) % alerts.length;
+
+      const numeroCodificado = "NTQ5MjYxNjA4NzI0NQ=="; // 5492616087245
+      const mensaje = encodeURIComponent("Hola, quiero más información..");
+      const numero = atob(numeroCodificado);
+      window.location.href = `https://wa.me/${numero}?text=${mensaje}`;
     }
-    setInterval(updateAlert, 6000);
-    updateAlert();
   </script>
 </body>
 </html>
-
