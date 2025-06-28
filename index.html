@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Casino Minijuegos</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -16,8 +16,6 @@
       text-align: center;
       height: 100%;
       overflow: hidden;
-      overscroll-behavior: none;
-      touch-action: none;
     }
 
     .container {
@@ -30,7 +28,6 @@
       background-color: rgba(0, 0, 0, 0.65);
       box-sizing: border-box;
       padding: 30px 15px 0;
-      overflow: hidden;
     }
 
     .logo {
@@ -91,7 +88,7 @@
 
     .alerta-bono {
       position: fixed;
-      bottom: 90px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
       background-color: rgba(0, 255, 136, 0.2);
@@ -129,28 +126,22 @@
       .alerta-bono {
         font-size: 0.9rem;
         padding: 8px 12px;
-        bottom: 85px;
+        bottom: 20px;
       }
     }
   </style>
 
   <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;
-      n=f.fbq=function(){
-        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-      };
-      if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];
-      t=b.createElement(e);t.async=!0;
-      t.src=v;
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '1066856052037916');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '973322538310425');
 
     document.addEventListener("DOMContentLoaded", function() {
       fbq('track', 'PageView');
@@ -158,7 +149,7 @@
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1066856052037916&ev=PageView&noscript=1"/>
+    src="https://www.facebook.com/tr?id=973322538310425&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
 </head>
@@ -184,13 +175,13 @@
 
     function redirigirWhatsapp() {
       if (!eventoDisparado) {
-        fbq('track', 'Lead', {
+        fbq('track', 'Subscribe', {
           content_name: 'Botón WhatsApp'
         });
         eventoDisparado = true;
       }
 
-      const numeroCodificado = "NTQ5MjYxNjA4NzI0NQ=="; // 5492616087245
+      const numeroCodificado = "NTQ5MjYxNjA4NzIyMw=="; // 5492616087223
       const mensaje = encodeURIComponent("Hola, quiero más información..");
       const numero = atob(numeroCodificado);
       window.location.href = `https://wa.me/${numero}?text=${mensaje}`;
