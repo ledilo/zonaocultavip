@@ -41,11 +41,8 @@
     /* BLOQUE BONO */
     .center{width:100%;max-width:980px;display:grid;place-items:center;text-align:center;margin:clamp(8px,2.4vw,18px) auto}
     .bonus{display:inline-grid;gap:10px}
-    .bonus .tag{display:inline-flex;align-items:center;justify-content:center;
-      font-family:Poppins,Inter,sans-serif;font-weight:800;line-height:1;
-      font-size:clamp(40px,12vw,82px);
-      letter-spacing:1px;color:#3a2200; text-shadow: 0 1px 0 rgba(255,255,255,.15);
-      padding:.22em .36em;border-radius:.22em;position:relative}
+    .bonus-img{width:min(92vw,980px);max-width:780px;height:auto;display:block;filter:drop-shadow(0 8px 24px rgba(0,0,0,.45));animation:pop .35s ease both}
+    .bonus small{display:block;color:var(--muted);font-size:clamp(14px,3.6vw,18px);margin-top:12px}
     .bonus .tag::before{
       content:"";position:absolute;inset:0;border-radius:.22em;
       background:linear-gradient(180deg,#ffd86b 0%,#ffb300 40%,#ff9f00 60%,#ffcf6b 100%);
@@ -68,6 +65,7 @@
     .btn-wa:hover{transform:translateY(-1px);filter:saturate(1.08)}
     .btn-wa:active{transform:translateY(1px)}
     .btn-wa svg{width:28px;height:28px;flex:0 0 auto;filter:drop-shadow(0 1px 0 rgba(0,0,0,.35))}
+    .btn-wa img{width:28px;height:28px;object-fit:contain;display:block}
 
     .note{color:#fff;font-size:clamp(14px,3.6vw,18px);text-align:center;opacity:.9}
 
@@ -108,8 +106,11 @@
       </header>
 
       <div class="center">
-        <div class="bonus">
-          <div class="tag">BONO&nbsp;+25%</div>
+        <div class=\"bonus\">
+          <!-- Usa tu imagen de bono transparente -->
+          <img class=\"bonus-img\" src=\"bonus.png\" alt=\"BONO +20%\" loading=\"eager\"/>
+          <small>Mínimo de carga: $1000</small>
+        </div>
           <small>Mínimo de carga: $1000</small>
         </div>
 
@@ -184,3 +185,4 @@
   </script>
 </body>
 </html>
+
