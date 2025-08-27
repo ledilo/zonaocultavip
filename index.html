@@ -10,7 +10,6 @@
   <style>
     :root{
       --bg:#000;
-      --wa:#25D366;
       --text:#fff;
       --muted:#b6c3d3;
     }
@@ -20,20 +19,12 @@
     .logo{max-width:140px;width:60%;height:auto;margin-bottom:12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.8))}
     .bonus-img{max-width:260px;width:75%;height:auto;margin:0 auto 10px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.6))}
     .minimo{font-size:16px;color:var(--muted);margin-bottom:16px;font-weight:600}
-    .btn-wa{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      font-family:Poppins,Inter,sans-serif;font-weight:800;font-size:18px;
-      color:#fff;padding:14px 26px;border-radius:999px;
-      background:linear-gradient(180deg,#34eb77,#0e9e4c);
-      box-shadow:0 12px 24px rgba(0,0,0,.55), inset 0 -5px 0 rgba(0,0,0,.25);
-      transition:transform .2s ease, filter .2s ease;
-      animation:floaty 3s ease-in-out infinite, glow 2.5s ease-in-out infinite alternate}
-    .btn-wa:hover{transform:translateY(-2px);filter:saturate(1.2)}
-    .btn-wa:active{transform:translateY(1px)}
-    .btn-wa img{width:24px;height:24px;object-fit:contain;display:block}
-    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .btn-wa{display:inline-block;animation:floaty 3s ease-in-out infinite, glow 2.5s ease-in-out infinite alternate}
+    .btn-wa img{width:240px;height:auto;display:block}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     @keyframes glow{
-      0%{box-shadow:0 12px 24px rgba(0,0,0,.55), inset 0 -5px 0 rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,.3)}
-      100%{box-shadow:0 12px 24px rgba(0,0,0,.55), inset 0 -5px 0 rgba(0,0,0,.25),0 0 24px 6px rgba(37,211,102,.22)}
+      0%{filter:drop-shadow(0 0 0 rgba(37,211,102,.0))}
+      100%{filter:drop-shadow(0 0 12px rgba(37,211,102,.6))}
     }
     footer{padding:10px;color:#9fb3c8;font-size:12px;text-align:center;width:100%;background:transparent;position:absolute;bottom:0;left:0}
   </style>
@@ -47,7 +38,7 @@
   <div class="minimo">Mínimo de carga: $1000</div>
   <!-- BOTÓN WA -->
   <a class="btn-wa" id="waLink" href="#" target="_blank" rel="noopener">
-    <img src="wa.png" alt="WhatsApp"/> WhatsApp
+    <img src="wa-btn.png" alt="WhatsApp"/>
   </a>
 
   <footer>
@@ -76,7 +67,6 @@
   </script>
 </body>
 </html>
-
 
 
 
