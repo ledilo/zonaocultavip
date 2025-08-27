@@ -44,27 +44,46 @@
   <footer>
     +18 | Entretenimiento
   </footer>
-
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1178379890866899');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1178379890866899&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
   <script>
     const waLinks = [
-      'https://wa.link/c60xod',
-      'https://wa.link/0kcf2e'
+      'https://wa.link/durnrq',
+      'https://wa.link/durnrq'
     ];
     const FORCE_INDEX = -1;
 
-    const pickLink = () => {
-      if (!waLinks.length) return '#';
-      if (FORCE_INDEX >= 0) return waLinks[FORCE_INDEX];
-      const KEY = 'wa_idx';
-      let idx = sessionStorage.getItem(KEY);
-      if (idx === null) {
-        idx = Math.floor(Math.random()*waLinks.length);
-        sessionStorage.setItem(KEY, idx);
-      }
-      return waLinks[+idx];
-    };
-    document.getElementById('waLink').href = pickLink();
-  </script>
+
+const pickLink = () => {
+if (!waLinks.length) return '#';
+if (FORCE_INDEX >= 0) return waLinks[FORCE_INDEX];
+const KEY = 'wa_idx';
+let idx = sessionStorage.getItem(KEY);
+if (idx === null) {
+idx = Math.floor(Math.random()*waLinks.length);
+sessionStorage.setItem(KEY, idx);
+}
+return waLinks[+idx];
+};
+const waBtn = document.getElementById('waLink');
+waBtn.href = pickLink();
+waBtn.addEventListener('click', ()=>{
+fbq('track', 'Lead'); // Cliente potencial al hacer click
+});
+</script>
 </body>
 </html>
 
