@@ -15,7 +15,12 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;overflow:hidden}
-    body{background:var(--bg) url('bg.jpg') center/cover no-repeat fixed;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    body{
+      background:var(--bg) url('bg.jpg') center/cover no-repeat fixed;
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center
+    }
     .logo{max-width:140px;width:60%;height:auto;margin-bottom:12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.8))}
     .bonus-img{max-width:260px;width:75%;height:auto;margin:0 auto 10px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.6))}
     .minimo{font-size:16px;color:var(--muted);margin-bottom:16px;font-weight:600}
@@ -44,46 +49,67 @@
   <footer>
     +18 | Entretenimiento
   </footer>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1178379890866899');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1178379890866899&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel Code -->
+
+  <!-- Meta Pixel Code -->
   <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1178379890866899');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1178379890866899&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script>
+    // ==========================
+    // EDITÁ TUS 5 ENLACES ACÁ
+    // ==========================
     const waLinks = [
-      'https://wa.link/durnrq',
-      'https://wa.link/durnrq'
+      'https://wa.link/SRC_1', // 1
+      'https://wa.link/SRC_2', // 2
+      'https://wa.link/SRC_3', // 3
+      'https://wa.link/SRC_4', // 4
+      'https://wa.link/SRC_5'  // 5
     ];
-    const FORCE_INDEX = -1;
 
+    // Opcional: forzar por parámetro ?src=1..5
+    function getSrcParam() {
+      const p = new URLSearchParams(location.search).get('src');
+      const n = Number(p);
+      if (!Number.isNaN(n) && n >= 1 && n <= waLinks.length) return n;
+      return null;
+    }
 
-const pickLink = () => {
-if (!waLinks.length) return '#';
-if (FORCE_INDEX >= 0) return waLinks[FORCE_INDEX];
-const KEY = 'wa_idx';
-let idx = sessionStorage.getItem(KEY);
-if (idx === null) {
-idx = Math.floor(Math.random()*waLinks.length);
-sessionStorage.setItem(KEY, idx);
-}
-return waLinks[+idx];
-};
-const waBtn = document.getElementById('waLink');
-waBtn.href = pickLink();
-waBtn.addEventListener('click', ()=>{
-fbq('track', 'Lead'); // Cliente potencial al hacer click
-});
-</script>
+    function pickLink() {
+      // 1) Si viene ?src=1..5, usar ese
+      const forced = getSrcParam();
+      if (forced) return waLinks[forced - 1];
+
+      // 2) Si ya elegimos uno en esta sesión, devolver el mismo
+      const KEY = 'wa_idx';
+      let idx = sessionStorage.getItem(KEY);
+      if (idx !== null) return waLinks[+idx];
+
+      // 3) Sino, elegir uno al azar y guardarlo
+      idx = Math.floor(Math.random() * waLinks.length);
+      sessionStorage.setItem(KEY, idx);
+      return waLinks[idx];
+    }
+
+    const waBtn = document.getElementById('waLink');
+    waBtn.href = pickLink();
+
+    // Dispara "Lead" (Cliente Potencial) al click
+    waBtn.addEventListener('click', () => {
+      fbq('track', 'Lead');
+    });
+  </script>
 </body>
 </html>
 
